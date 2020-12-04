@@ -1,0 +1,36 @@
+1. I first started off by adding new variable to the constructor: needToPick and
+pickedAlready, because of the new rules of needing to move marks after turn 6. I
+added if statement logic branches into the handleClick method to set new
+behaviour for when the turns went past 6. it would check to see if the box that
+was clicked was an appropriate box to move from. To determine this, a switch
+statement was used to check every box. If it was valid, the position of that
+space would be saved for the next move. 2. The render method was also modified
+to display when a pick is needed. It also displays different text when a mark is
+picked and needs to be moved. 3. A validity function was made to compare two
+locations on an iteration of the square board, to see if a piece could validly
+be moved from on position to the other. This was necessary for the move portion
+of the handleClick method so that the game would know to ignore invalid
+moves. 4. At the beginning of the handClick method, more conditions were added
+for premature returns. Because of possible branches and unwanted clicks when the
+desired inputs change between picks and moves, we need to ignore a greater
+variety of clicks: when desiring a move, ignore attempts to move to taken spaces
+and when desiring a pick, ignore attempts to pick innappropriate spaces. 5. At
+this point we've fully implemented chorus lapilli's pick and move functionality
+for turns after turn 6. However, we also need to account for chorus lapilli's
+rule for when a piece is in the center square: you must either win or vacate the
+square in the next move. 6. To the implement this rule, we add three more
+functions to our application: winOrVacate, to determine what marks can be moved
+when the center square is occupied, mustwin, to determine where marks have to be
+moved to if they are picked, and arraysEqual, which is a helper function for
+determing if arrays are equal to each other. 7. We used these functions in the
+handleClick method: when a mark needs to be picked, the games state is checked
+by the winOrVacate and mustWin functions to look for win or vacate conditions
+and impose them on the player whose turn it is. The mustwin positions are saved
+and passed on to the move portions of the handleClick method for when certain
+marks are picked. With this, we finish implementing both rules of chorus
+lapilli. 8. However, we still need to make changes to how history works. We need
+save buttons only once for each players turn and not twice for the pick and
+move parts of their turns. We do this by deleting part of the setState in the
+pick logic branch, to prevent extraneous history recording. We then also to the
+jumpTo method in order to determine what must be done (needing to pick) when
+going back to previous turn after the sixth turn. 

@@ -1,0 +1,31 @@
+EXERCISE 2.1
+
+Warm Up:
+##Max and Min of 64-bit signed integer
+(setq max (- (expt 2 63) 1))
+9223372036854775807
+(setq min (* (expt 2 63) -1))
+-9223372036854775808
+##Computed value
+(setq compute (expt 2 (expt 3 4)))
+2417851639229258349412352
+#The value returns nil
+(and (< compute max) (> compute min))
+nil
+
+C-h k C-h k and C-h k M-SPC brings us straight to the documentation of the C-h k and M-SPC bindings respectively. These documentation pages could be found previously by searching through the commands list of C-h b. The
+difference in these pages is that the C-h k first method has a little more text at the top of the documentation page specifying the exact keybinding of the command.
+
+Using M-SPC on text deletes spaces and tabs to the left and right of the pointer in exchange for a single space on the pointer.
+
+
+EXERCISE 2.2
+For this part of the assignment, I interpreted that if the max position of the pointer was on some line n, the number of lines on that buffer was either n or n-1. If the character that preceded the last position was a newline that ended the previous line, the last empty line would simply not count. If there were characters that preceded and were on the same line as the last position, this last line would count as a line. So if the last position was on a line n that didn't count and the pointer was at that position, the function which-line would return "Line n of n-1 lines". If the line of the last position did count, the function would return "Line n of n lines"
+
+
+HOMEWORK: PYTHON SCRIPTING
+When invoking randline.py on an empty file, it results in an error because it tries to access lines in the file when the file is empty. It tries to access an out of range index (IndexError).
+
+When invoking the script with Python 3 instead of Python 2, it results in a syntax error because the jump from Python 2 to Python 3 resulted in the change of some syntax requirements. This old randline.py script was written with Python 2 in mind and not Python 3.
+
+WHen invoking shuf.py with Python 2 instead of Python 3, there are issues with printing lines and so on. This is because Python 3 is not backwards compatible with Python 2 and this script was written with Python 3 in mind.

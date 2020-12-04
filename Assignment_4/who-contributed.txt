@@ -1,0 +1,26 @@
+In order to investigate when and how this statement was introduced to
+the tzdb files, I decided to search through all of the commits for the
+exact string in order to find the date and author of the statement
+relative to the repository. I used the following command:
+
+git log --source -S 'Even newspaper reports present contradictory
+information.' --all
+
+This outputs the repository's commits that contain the string 'Even
+newspaper reports present contradicotry information.' The argument
+option --all makes it so that all commits are searched.
+
+According to the commit description, this was authored by Arthur David
+Olson and was commited by Eggert on July 18, 2012. It returned the git
+commit id of c12b432741eed9a422fbf99fa27af6e7a941d88b. Next, using the
+first seven letters of this id allowed me to observe the changes this
+commit made to the repository:
+
+git diff c12b432~ c12b432
+
+using C-s on this following comparison screen allowed for me to search
+for the location of the string. The paragraph quoting this string
+starts with: "From Paul Eggert (1995-12-19):", suggesting Eggert was
+the one to quote this statement as one written by "Shanks". I would
+have to find the book to investigate any copyright infringement but it
+currently seems that the author was cited to some extent.

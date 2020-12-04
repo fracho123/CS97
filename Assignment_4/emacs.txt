@@ -1,0 +1,11 @@
+1. The top left subwindow is the a graph of the commits and their 
+descriptions. The top middle provides the authors of the commits
+to the left and the rightmost box shows the dates and times of
+these commits. The bottom left subwindows display information about
+each of the searched commits with IDs for the parents and for the
+child. It describes where the commits go. The bottom right
+subwindow says comments. 
+
+3. Eggert's repository has a lot more directories and files in
+addition the one master present in the Savannah repository.
+Eggert's has branches and scratch directories.

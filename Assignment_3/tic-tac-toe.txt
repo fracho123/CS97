@@ -1,0 +1,31 @@
+1. I first started off by installing node.js on my computer to have a Local
+Development Environment. I also installed Visual Studio Code to edit my css and
+javascript files for this applicaiton. I then added index.css and index.js to
+a new project folder, with code from the tutorial. (running npm start in the
+command prompt allows me to see the skeleton tic-tac-toe field. 2. I changed the
+renderSquare method and the class Square's render method in order to display
+numbers on each square of the rendered output. 3. Further changes were made to
+the class (creating a constructor to give each square a value) and to the render
+method in order to allow an x to be left once a square was clicked. 4. I then
+added a constructor to the Board class in order to initialize the data for the
+squares as an empty size 9 arrary "squares". 5. The renderSquare method was
+modified to render each square with a value read from the "squares" array and
+also to use the handleClick method for when a square is clicked. Note that this
+will not longer compile as handleClick has not yet been added. 6. The render
+method for the Square was modfied next: When a square is clicked, it will
+activate the onClick method. The constructor was deleted as well because it is
+no longer being used to keep track of states. 7. The handleClick method is then
+added to he Board class in order to handle when a square is clicked. 8. We
+replace the square class with a function since having a whole class for square
+was unnecessary. 9. Changes were made to the board class's constructor and
+handleClick method is in order to allow for X's and O's to take turns when
+marking squares. A slight modification was also made to the render method in
+order to display which player's turn it is (instead of always saying X is
+next). 10. Finally, a function is added for determing when a player has won. The
+render method is changed again to output text when someone wins and handleClick
+does nothing when someone wins. 11. To add time traveling to our game, we move
+methods to our class Game. Our constructor is moved over and we add history and
+code is removed from our Board class is to amend for additions to game
+class. 12. Next we add handleClick to the game class but to account for our
+clicks to time travel. 13. moves are mapped to history and we use index as a key
+for our map. We also add step numbers to keep tracking of game progression.
