@@ -1,0 +1,50 @@
+I started by downloading the necessary source code and moving it into
+the linux server to decompress and examine the individual files. After
+understanding the code to the best of my  ability, I modified the
+Makefile file so that the "make check" would test the program. I
+obtained a simple script from discussion for this command. Next I
+modularized the source code into seperate .c and .h files: options,
+output, rand64-hw, rand64-sw, and randall.c. I didn't remove or change
+the include files for sake of time. After modularizing the code, I
+tested it make check to see if the behaviour was the same as it was
+before. This took quite of debugging and amendements to my code as I
+frequently forgot arbitrary lines. I also changed the randall: command
+in the makefile in order to enable compilation. Next, I had to
+implement the input and output options with -i and -o. This was made
+possible with the getopt function, which was shared in discussion. I
+also decided to add a struct to options.h so that the main function
+would be able to communicate with the options functions by passing a
+pointer to this struct. This struct contains information about the
+arguments and how to interpret them. In options.c, in addition to
+given validation code, I added an opt while loop to parse through and
+search for the expected argument -i and -o and make the necessary
+changes to the struct so that main would be able identify what actions
+need to tbe done. If any other argumments were found, it would result
+in an error. By default, rdrand and stdio would be set for input and
+ouput in the struct. After debugging and completing this part, we turn
+back to the main function. Main now knows information about the
+arguments passed in, so now we to set its behaviour. The program was
+initally given to already work with software and hardware options, we
+just set which ones to use when given specific arguments. When rdrand
+is set, we must use hardware random number generation. If a file is
+given as input, software must be used. Additionally, if mdrand48_r is
+chosen as the argument for input, we must implement that function
+instead. To do this, we define three new functions for mrand48_r
+above: an initializer, a function for using mrand48_r, and a
+finisher. These were made to be work in place of the three functions
+for software and hardware each so that it would be implemented
+relatively seamlessly. With this, all of my input options are
+functioning. Next, we have define behaviour for output. This program
+already uses stdio by default so no changes were needed for
+that. Instead, what must be done is implementing outputing N KiB bytes
+at a time when a positive decimal integer is passed in after -o. To do
+this, we had to use malloc and write in order to create a buffer of
+the desired size and then print those one after the other. This would
+simply be an different method of output.  I set different paths for
+the two different output methods in main. I then added all kinds of
+test that I could think of to the test script given to check my work
+for any problems. For the three time tests provided at the bottom of
+the spec, the sanity check time was 1.07634 seconds. For the first
+test, my program had a real time of 1.079. For the second test: a time
+of 1.44. For the third test: 3.82, which was significantly slower for
+some reason.
